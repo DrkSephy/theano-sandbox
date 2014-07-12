@@ -9,10 +9,12 @@ def grad_sum(x, y, z):
     Returns: dz / dx + dz / dy
     """
 
+    return sum(T.grad(z, [x,y]))
+
 if __name__ == "__main__":
     x = T.scalar()
     y = T.scalar()
     z = x + y
     s = grad_sum(x, y, z)
-    assert s.eval({x: 0 y:0}) == 2
+    assert s.eval({x: 0, y: 0}) == 2
     print "SUCCESS!"
